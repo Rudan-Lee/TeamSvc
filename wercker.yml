@@ -5,46 +5,31 @@ build:
       name: restore
       code: | 
         dotnet restore
-      
   - script:
       name: build
-      cwd: src
       code: | 
         dotnet build
-        
-        
   - script:
       name: publish
-      cwd: src
       code: | 
         dotnet publish -o publish
-        
   - script:
       name: test-restore
-      cwd: test
       code: | 
         dotnet restore
-        
   - script:
       name: test-build
-      cwd: test
       code: | 
         dotnet build
-        
   - script:
       name: test-run
-      cwd: test
       code: | 
         dotnet test
-        
-        
   - script:
       name: copy binary
-      cwd: src
       code: | 
-        cp -r . $WERCKER_OUTPUT_DIR/app
-        
- deploy:
+        cp -r . $WERCKER_OUTPUT_DIR/app 
+deploy:
    steps:
      - internal/docker-push:
         username: $DockerUserName
