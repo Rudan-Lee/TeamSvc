@@ -1,7 +1,7 @@
 box: mcr.microsoft.com/dotnet/sdk:6.0
 no-respnse-timeout: 10
 build:
-  steps
+  steps:
     - script:
         name: restore
         code: | 
