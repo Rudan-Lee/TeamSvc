@@ -3,7 +3,6 @@ no-respnse-timeout: 10
 build:
   - steps:
       name: restore
-      cwd: src
       code: | 
         dotnet restore
       
