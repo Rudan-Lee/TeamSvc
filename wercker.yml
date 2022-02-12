@@ -1,34 +1,35 @@
 box: mcr.microsoft.com/dotnet/sdk:6.0
 no-respnse-timeout: 10
 build:
-  - steps:
-      name: restore
-      code: | 
-        dotnet restore
-  - script:
-      name: build
-      code: | 
-        dotnet build
-  - script:
-      name: publish
-      code: | 
-        dotnet publish -o publish
-  - script:
-      name: test-restore
-      code: | 
-        dotnet restore
-  - script:
-      name: test-build
-      code: | 
-        dotnet build
-  - script:
-      name: test-run
-      code: | 
-        dotnet test
-  - script:
-      name: copy binary
-      code: | 
-        cp -r . $WERCKER_OUTPUT_DIR/app 
+  steps
+    - script:
+        name: restore
+        code: | 
+            dotnet restore
+    - script:
+        name: build
+        code: | 
+            dotnet build
+    - script:
+        name: publish
+        code: | 
+            dotnet publish -o publish
+    - script:
+        name: test-restore
+        code: | 
+            dotnet restore
+    - script:
+        name: test-build
+        code: | 
+            dotnet build
+    - script:
+        name: test-run
+        code: | 
+            dotnet test
+    - script:
+        name: copy binary
+        code: | 
+            cp -r . $WERCKER_OUTPUT_DIR/app 
 deploy:
    steps:
      - internal/docker-push:
