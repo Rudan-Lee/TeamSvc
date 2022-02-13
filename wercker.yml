@@ -4,26 +4,32 @@ build:
   steps:
     - script:
         name: restore
+        cwd: src
         code: | 
             dotnet restore
     - script:
         name: build
+        cwd: src
         code: | 
             dotnet build
     - script:
         name: publish
+        cwd: src
         code: | 
             dotnet publish -o publish
     - script:
         name: test-restore
+        cwd: src
         code: | 
             dotnet restore
     - script:
         name: test-build
+        cwd: src
         code: | 
             dotnet build
     - script:
         name: test-run
+        cwd: src
         code: | 
             dotnet test
     - script:
@@ -38,6 +44,6 @@ deploy:
         tag: latest
         repository: dockrudan/teamsvc
         registry: https://registry.hub.docker.com
-        entrypoint: "/pipeline/source/app/docker_entrypoints.sh"
+        entrypoint: "/pipeline/source/app/src/docker_entrypoints.sh"
         
         
