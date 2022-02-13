@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace StatlerWaldorfCorp.TeamService.Controllers
 {
+    //https://localhost:5001/teams/GetAllTeams/
+    [Route("[controller]/[action]")]
+    [ApiController]
     public class TeamsController : ControllerBase{
 
         ITeamRepository repository;
@@ -23,6 +26,7 @@ namespace StatlerWaldorfCorp.TeamService.Controllers
             //return new Team[]{new Team("one"), new Team("two")};
         }
 
+        [HttpPost]
         public async Task<IActionResult> CreateTeam(Team t){
             repository.AddTeam(t);
             return this.Ok();
