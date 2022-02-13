@@ -15,6 +15,7 @@ namespace StatlerWaldorfCorp.TeamService
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Console.WriteLine("URL Example:https://localhost:5001/teams/GetAllTeams/");
         }
 
         public IConfiguration Configuration { get; }
