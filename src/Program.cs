@@ -29,7 +29,8 @@ namespace StatlerWaldorfCorp.TeamService
             .Build();
 
             var host = WebHost.CreateDefaultBuilder(args)
-            .UseUrls("http://0.0.0.0:8080;https://0.0.0.0:8443")
+            .UseUrls("http://0.0.0.0:8080")
+            //.UseUrls("http://0.0.0.0:8080;https://0.0.0.0:8443")
             .UseConfiguration(config)
             .UseStartup<Startup>();
 
