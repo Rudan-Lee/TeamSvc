@@ -19,17 +19,32 @@ build:
             dotnet publish -o publish
     - script:
         name: test-restore
-        cwd: src
+        cwd: test
         code: | 
             dotnet restore
     - script:
         name: test-build
-        cwd: src
+        cwd: test
         code: | 
             dotnet build
     - script:
         name: test-run
-        cwd: src
+        cwd: test
+        code: | 
+            dotnet test
+    - script:
+        name: integration-test-restore
+        cwd: StatlerWaldorfCorp.TeamService.Tests.Integration
+        code: | 
+            dotnet restore
+    - script:
+        name: integration-test-build
+        cwd: StatlerWaldorfCorp.TeamService.Tests.Integration
+        code: | 
+            dotnet build
+    - script:
+        name: integration-test-run
+        cwd: StatlerWaldorfCorp.TeamService.Tests.Integration
         code: | 
             dotnet test
     - script:

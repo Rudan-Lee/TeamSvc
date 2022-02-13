@@ -6,3 +6,7 @@ test/bin/
 test/obj/
 
 src/obj/
+
+StatlerWaldorfCorp.TeamService.Tests.Integration/bin/
+
+StatlerWaldorfCorp.TeamService.Tests.Integration/obj/

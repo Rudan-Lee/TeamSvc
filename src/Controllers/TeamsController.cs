@@ -21,15 +21,49 @@ namespace StatlerWaldorfCorp.TeamService.Controllers
         [HttpGet]
         public async virtual Task<IActionResult>  GetAllTeams()
         {
-            return this.Ok(repository.GetTeams());
+            return this.Ok(repository.List());
             //return Enumerable.Empty<Team>();
             //return new Team[]{new Team("one"), new Team("two")};
         }
 
+        [HttpGet("{id}")]
+        public virtual IActionResult GetTeam(Guid id){
+            Team team = repository.Get(id);
+            if (team != null){
+                return this.Ok(team);
+            }
+            else{
+                return this.NotFound();
+            }
+        }
+
         [HttpPost]
-        public async Task<IActionResult> CreateTeam(Team t){
-            repository.AddTeam(t);
-            return this.Ok();
+        public async Task<IActionResult> CreateTeam(Team newTeam){
+            repository.Add(newTeam);
+            return this.Created($"/teams/{newTeam.ID}", newTeam);
+        }
+
+        [HttpPut("{id}")]
+        public virtual IActionResult UpdateTeam([FromBody]Team team, Guid id){
+            team.ID = id;
+
+            if (repository.Update(team) == null){
+                return this.NotFound();
+            }
+            else{
+                return this.Ok(team);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public virtual IActionResult DeleteTeam(Guid id){
+            Team team = repository.Delete(id);
+            if (team == null){
+                return this.NotFound();
+            }
+            else{
+                return this.Ok(team.ID);
+            }
         }
 
     }

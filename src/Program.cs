@@ -21,6 +21,7 @@ namespace StatlerWaldorfCorp.TeamService
             // .Build();
 
             // host.Run();
+     
 
             var config = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
